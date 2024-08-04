@@ -8,9 +8,5 @@
       </list>
     </option>
   </component>
-  <component name="ProjectResources">
-    <resource url="https://java.sun.com/xml/ns/javaee" location="$PROJECT_DIR$" />
-    <resource url="https://www.w3.org/2001/XMLSchema-instance" location="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="22" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="JavaSE-17" project-jdk-type="JavaSDK" />
 </project>
