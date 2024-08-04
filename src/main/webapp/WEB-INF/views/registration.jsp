@@ -46,6 +46,12 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +63,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            
+
         </div>
     </nav>
 
