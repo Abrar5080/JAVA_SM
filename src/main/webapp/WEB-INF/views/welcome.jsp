@@ -1,12 +1,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:out value="${securityContext.authentication.name}"/>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Welcome</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
     <link href="${contextPath}/resources/css/profile.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -37,7 +42,7 @@
                         <!-- Navbar Links -->
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="./ORqmj">Stream</a></li>
+
                                 <li><a href="#">My Activity</a></li>
                                <li>
 
@@ -73,7 +78,7 @@
                                                             ${pageContext.request.userPrincipal.name}@hkhinfotech.co.in
                                                         </p>
                                                         <div class="divider"></div>
-                                                        <a href="${contextPath}/user/${pageContext.request.userPrincipal.name}" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Update Profile </a>
+                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Update Profile </a>
                                                         <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
                                                         <a href="#" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
                                                         <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
@@ -145,9 +150,9 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <span>
-                        <h1 class="panel-title pull-left" style="font-size:30px;">${pageContext.request.userPrincipal.name} &nbsp; <small>${pageContext.request.userPrincipal.name}@hkhinfotech.co.in</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title=" sharing with you"></i></h1>
+                        <h1 class="panel-title pull-left" style="font-size:30px;"> <small>@hkhinfotech.co.in</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title=" sharing with you"></i></h1>
                         <div class="dropdown pull-right">
-						
+
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Friends
                                 <span class="caret"></span>
@@ -161,10 +166,22 @@
                             </ul>
                         </div>
                     </span>
+
+                   <%
+                       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+                       String username = auth != null ? auth.getName() : "Guest";
+                   %>
+                   <p>Welcome, <%= username %>!</p>
+
+
+
                        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-                       <!-- Debugging: Output the userPrincipal.name -->
-                       <p>Username: <c:out value="${pageContext.request.userPrincipal.name}"/></p>
+
+
+
+
+
 
                        <br><br>
                        <i class="fa fa-tags" aria-hidden="true"></i>
@@ -175,7 +192,7 @@
 
                        <a href="${contextPath}/users" class="btn btn-success">All Users</a>
                        <a href="${contextPath}/user/rabbit" class="btn btn-success">RabbitMq</a>
-                       <a href="${contextPath}/user/elasticsearch" class="btn btn-success">Elasticsearch</a>
+                       <a href="#" class="btn btn-success">Elasticsearch</a>
 
                        <br><br><hr>
 

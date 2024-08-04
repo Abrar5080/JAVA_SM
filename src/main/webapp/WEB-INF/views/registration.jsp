@@ -100,6 +100,7 @@
                     <!-- Confirm Password field -->
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Confirm password is required">
                         <span class="label-input100">Confirm Password</span>
+                        <br>
                         <form:password path="passwordConfirm" class="input100" placeholder="Confirm your password"/>
                         <form:errors path="passwordConfirm" cssClass="error"/>
                         <span class="focus-input100" data-symbol="&#xf190;"></span>

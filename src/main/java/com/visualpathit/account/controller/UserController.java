@@ -1,5 +1,6 @@
 package com.visualpathit.account.controller;
 
+import com.visualpathit.account.UserNotFoundException;
 import com.visualpathit.account.model.User;
 import com.visualpathit.account.service.ProducerService;
 import com.visualpathit.account.service.SecurityService;
@@ -7,12 +8,15 @@ import com.visualpathit.account.service.UserService;
 import com.visualpathit.account.utils.MemcachedUtils;
 import com.visualpathit.account.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -68,6 +72,11 @@ public class UserController {
 
     @PostMapping("/login")
     public String loginPost(@ModelAttribute("user") User user, Model model) {
+        User existingUser = userService.findByUsername(user.getUsername());
+        if (existingUser == null) {
+            throw new UserNotFoundException("User not found with username: " + user.getUsername());
+        }
+
         boolean loginSuccessful = securityService.autologin(user.getUsername(), user.getPassword());
         if (!loginSuccessful) {
             model.addAttribute("error", "Your username and password is invalid.");
@@ -76,10 +85,22 @@ public class UserController {
         return "redirect:/welcome";
     }
 
+
+
     @GetMapping("/welcome")
     public String welcome(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            System.out.println("Authenticated user: " + username);
+        } else {
+            model.addAttribute("username", "Guest");
+            System.out.println("No authenticated user.");
+        }
         return "welcome";
     }
+
 
     @GetMapping("/index")
     public String indexHome(Model model) {
