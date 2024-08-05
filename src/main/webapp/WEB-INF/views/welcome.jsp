@@ -51,64 +51,68 @@
                                 <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
                             </ul>
                             <!-- User Dropdown -->
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="user-avatar pull-left" style="margin-right: 8px; margin-top: -5px;">
-                                            <img src="${contextPath}/resources/Images/user/user.png" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
-                                        </span>
-                                        <span class="user-name">
-                                            ${pageContext.request.userPrincipal.name}
-                                        </span>
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="navbar-content">
-                                                <div class="row">
-                                                    <div class="col-md-5">
-                                                        <img src="${contextPath}/resources/Images/user/user.png" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
-                                                        <p class="text-center small">
-                                                            <a href="${contextPath}/upload">Change Photo</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <span>${pageContext.request.userPrincipal.name}</span> <br/>
-                                                        <p class="text-muted small">
-                                                            ${pageContext.request.userPrincipal.name}@hkhinfotech.co.in
-                                                        </p>
-                                                        <div class="divider"></div>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Update Profile </a>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="navbar-footer">
-                                                <div class="navbar-footer-content">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> C P</a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <a onclick="window.location.href='${contextPath}';" class="btn btn-default btn-sm pull-right">
-                                                                <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Logout form -->
-                                            <div class="container">
-                                                <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                                    <form id="logoutForm" method="POST" action="${contextPath}/logout">
-                                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                                    </form>
-                                                </c:if>
-                                            </div>
-                                        </li>
-                                    </ul>
+                         <ul class="nav navbar-nav navbar-right">
+                             <li class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                     <span class="user-avatar pull-left" style="margin-right: 8px; margin-top: -5px;">
+                                         <img src="${contextPath}/resources/Images/user/user.png" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
+                                     </span>
+                                     <span class="user-name">
+                                         ${pageContext.request.userPrincipal.name}
+                                     </span>
+                                     <b class="caret"></b>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li>
+                                         <div class="navbar-content">
+                                             <div class="row">
+                                                 <div class="col-md-5">
+                                                     <img src="${contextPath}/resources/Images/user/user.png" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                     <p class="text-center small">
+                                                         <a href="${contextPath}/upload">Change Photo</a>
+                                                     </p>
+                                                 </div>
+                                                 <div class="col-md-7">
+                                                     <span>${pageContext.request.userPrincipal.name}</span> <br/>
+                                                     <p class="text-muted small">
+                                                         ${pageContext.request.userPrincipal.name}@hkhinfotech.co.in
+                                                     </p>
+                                                     <div class="divider"></div>
+                                                     <a href="#" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Update Profile </a>
+                                                     <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
+                                                     <a href="#" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
+                                                     <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="navbar-footer">
+                                             <div class="navbar-footer-content">
+                                                 <div class="row">
+                                                     <div class="col-md-6">
+                                                         <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> C P</a>
+                                                     </div>
+                                                     <div class="col-md-6">
+                                                         <!-- Sign Out Button -->
+                                                         <a href="#" class="btn btn-default btn-sm pull-right" onclick="document.getElementById('logoutForm').submit();">
+                                                             <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out
+                                                         </a>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <!-- Logout form -->
+                                         <div class="container">
+                                             <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                                 <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                                 </form>
+                                             </c:if>
+                                         </div>
+                                     </li>
+                                 </ul>
+                             </li>
+                         </ul>
+
                                 </li>
                             </ul>
                         </div>
