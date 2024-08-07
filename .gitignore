@@ -53,3 +53,4 @@ Thumbs.db
 .classpath
 .gitattributes
 .project
+.smarttomcat/vprofile/conf
