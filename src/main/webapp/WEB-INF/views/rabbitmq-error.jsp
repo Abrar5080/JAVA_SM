@@ -13,16 +13,11 @@
             padding: 20px;
             margin: 0;
         }
-        h1 {
-            color: #FF0000;
-        }
-        h3 {
-            color: #555;
-        }
+      
     </style>
 </head>
 <body>
-    <h1>RabbitMQ Error</h1>
-    <h3>RabbitMQ server is off. Please start the RabbitMQ server and try again.</h3>
+    <h1>Unable to connect to the RabbitMQ service. The service might be offline, or the application may be unable to establish a connection</h1>
+
 </body>
 </html>
