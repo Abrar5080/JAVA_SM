@@ -13,9 +13,7 @@
             padding: 50px;
             background-color: #f2f2f2;
         }
-        h1 {
-            color: #ff4d4d;
-        }
+
         p {
             font-size: 18px;
         }
@@ -26,7 +24,7 @@
     </style>
 </head>
 <body>
-    <h1>User Not Found</h1>
-    <p>The user you are looking for does not exist. Please try again or <a href="${pageContext.request.contextPath}/login">go back to the login page</a>.</p>
+    <h1>Unable to connect to the database. Incorrect credentials may have been used.</h1>
+    <p>Please try again or <a href="${pageContext.request.contextPath}/login">go back to the login page</a>.</p>
 </body>
 </html>
